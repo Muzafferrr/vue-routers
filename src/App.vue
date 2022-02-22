@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    vue router
+    <hr>
+<!--    router link html a tagi gibidir-->
+    <router-link :to="'/componentA/'+ id">Go to Component A</router-link>
+    <br>
+    <router-link to="/componentB">Go to Component B</router-link>
+    <br>
+    <button @click="routerA">Router A</button>
+    <button @click="routerB">Router B</button>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return{
+      id:123
+    }
+  },
+  methods:{
+    routerA(){
+      this.$router.push("/componentA/" + this.id)
+    },
+    routerB(){
+      this.$router.push("/componentB-user1")
+    }
   }
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+/*aktif link için*/
+.router-link-active{
+  color: red;
 }
 </style>
